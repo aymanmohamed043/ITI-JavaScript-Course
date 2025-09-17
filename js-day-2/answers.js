@@ -137,32 +137,64 @@ lastIndex = url.indexOf("/", firstIndex);
 console.log(lastIndex === -1? url.slice(firstIndex): url.slice(firstIndex, lastIndex));
 
 
-// 13. Implement a simple substring search function naiveIndexOf(haystack, needle) that returns first index or -1 (do not call built-in indexOf inside the loop).
+// 13. Implement a simple substring search function naiveIndexOf(haystack, needle) 
+// that returns first index or -1 (do not call built-in indexOf inside the loop).
+function naiveIndexOf(haystack, needle){
+    for (let i = 0; i < haystack.length; i++){
+        if (haystack[i] == needle[0]){
+            return i
+        }
+    }
+    return -1
+}
+
+console.log(naiveIndexOf("hello world", "world")); // 6
+console.log(naiveIndexOf("abcdef", "cd"));      // 2
+console.log(naiveIndexOf("abcdef", "gh"));      // -1
+console.log(naiveIndexOf("abc", ""));      // -1
 
 
-// 14. Buggy code: var s = 'hello'; if (s.toUpperCase = 'HELLO') { console.log('match'); }  // Fix and explain issue.
+// 14. Buggy code: var s = 'hello'; if (s.toUpperCase === 'HELLO') { console.log('match'); }  // Fix and explain issue.
 
 
 // 15. Create an array of the numbers 1..5, then push 6 and unshift 0.
 
+let arr1 = new Array(1,2,3,4,5)
+console.log(arr1);
+arr1.push(6)
+arr1.unshift(0)
+console.log(arr1);
+
 
 // 16. Remove the last element and store it. Remove the first element and store it.
+let lastEle = arr1.pop()
+let firstEle = arr1.shift()
+
+console.log("first element: ", firstEle);
+console.log("last element: ", lastEle);
+console.log("my array: ", arr1);
 
 
 // 17. Use slice to copy the first 3 elements of [10,20,30,40,50] into a new array.
-
+console.log([10,20,30,40,50].slice(0, 3));
 
 // 18. Use splice on [1,2,3,4,5] to remove 3 and 4 and insert 'a','b'. Result should be [1,2,'a','b',5].
+arr1 = [1,2,3,4,5]
+arr1.splice(2, 2, 'a', 'b')
+console.log(arr1);
 
 
 // 19. Demonstrate the difference between slice and splice on the same starting array (show original after each).
 
+// slice as it but splice edit the array
 
 // 20. Create a sparse array by assigning index 7 on a fresh [] then log length.
 
+let sparseArray = new Array(5)
+sparseArray[7] = 7;
+console.log(sparseArray);
 
 // 21. Write a function compact(array) that returns a new array without falsy values (manual loop, no filter).
-
 
 // 22. Implement a manual array clone deepClone1D(a) for a 1D array without using slice/concat .
 
