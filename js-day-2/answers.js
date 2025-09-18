@@ -195,41 +195,89 @@ sparseArray[7] = 7;
 console.log(sparseArray);
 
 // 21. Write a function compact(array) that returns a new array without falsy values (manual loop, no filter).
+function compact(array){
+    let result = []
+
+    let n = array.length
+    for(let i=0; i<n; i++){
+        if (array[i]){
+            result.push(array[i])
+        }
+    }
+    console.log(result)
+}
+
+compact(sparseArray);
 
 // 22. Implement a manual array clone deepClone1D(a) for a 1D array without using slice/concat .
 
 
+
 // 23. Map [1,2,3] to their squares using map.
 
+console.log([1,2,3].map((a) => a*a))
 
 // 24. Filter [5,10,15,20] to keep values >= 12.
 
+console.log([5,10,15,20].filter((a)=> a>=12));
 
 // 25. Reduce [2,4,6] to product.
 
+console.log([2,4,6].reduce((result, el)=> result*el));
 
-// 26. Implement arraySum(a) using reduce; then implement arraySumLoop(a) using a for loop. Confirm outputs equal.
+// 26. Implement arraySum(a) using reduce; then implement arraySumLoop(a) using a for loop.
+//  Confirm outputs equal.
 
+function arraySum(a){
+    return a.reduce((acc, el) => acc + el)
+}
 
-// 27. Given ['Ali','Sara','Kareem'] produce ['A','S','K'] (first letters) without using map (use for loop).
+console.log(arraySum([1,2,3,4]))
 
+// 27. Given ['Ali','Sara','Kareem'] produce ['A','S','K'] (first letters)
+// without using map (use for loop).
+let names =  ['Ali','Sara','Kareem'] 
+let chars = []
+for (let c of names){
+    chars.push(c[0])
+}
 
-// 28. Implement unique(a) returning new array with duplicates removed (no ES6 Set). Complexity target: O(n^2) acceptable; comment how to improve.
+console.log(chars)
+// 28. Implement unique(a) returning new array with duplicates removed (no ES6 Set).
+//  Complexity target: O(n^2) acceptable; comment how to improve.
 
+names = ['ali','sara','kareem', 'ali', 'mohamed', 'sara'] 
+for(let i=0; i<names.length; i++){
+    if (names.slice(i+1).includes(names[i])){
+        names.splice(1,1)
+    }}
 
-// 29. Flatten one level: flatten1([1,[2,3],[4],5]) => [1,2,3,4,5] without using concat inside a loop (manual pushing and detection of Array).
+    console.log(names)
+
+// 29. Flatten one level: flatten1([1,[2,3],[4],5]) =>  
+// [1,2,3,4,5] without using concat inside a loop (manual pushing and detection of Array).
 
 
 // 30. Create object person with name and age; add a new property city after creation.
+let obj = {
+    'Uname': 'ayman',
+    'age': 24,
+}
 
-
+obj['gender'] = 'male'
 // 31. Access a property via bracket notation with a dynamic key variable.
 
 
 // 32. Write function countKeys(obj) returning number of own enumerable properties (use for-in).
 
+let count = 0
+for (let key in obj){
+    ++count
+    console.log(`key is ${key}, count is ${count}`)
+}
 
 // 33. List (as comments) 5 different values that coerce to false in ES5.
+// 0 , undifiend , null, NaN , ''
 
 
 // 34. safeToBoolean(v): return true only if v is strictly true, 'true', 1, or '1'; else false.
@@ -245,17 +293,40 @@ console.log(sparseArray);
 
 
 // 38. Generate a random integer 1..100.
+console.log("random number is: ", parseInt((Math.random() * 100 + 1)))
 
 
 // 39. Round 4.567 to nearest integer, round down, and round up (three results).
 
+console.log(Math.round(4.567), Math.ceil(4.567), Math.floor(4.567));
 
 // 40. randomIntArray(n, min, max): return array of length n with random ints (loop + push).
 
 
 // 41. parsePriceList(str): Given "Apple:2.50;Orange:1.75;Banana:3" return object {Apple:2.5, Orange:1.75, Banana:3} (strings to numbers).
 
+function parsePriceList(str){
+    obj = {}
+    for(let s of str.split(";")){
+        obj[s.split(":")[0]] = Number(s.split(":")[1])
+    }
+    return  obj
+}
 
-// 42. filterAndSortNumbers(mixedArray): keep only finite numbers then sort ascending (provide sample input and output). Use a numeric compare fn.
+console.log(parsePriceList("Apple:2.50;Orange:1.75;Banana:3"));
+
+// 42. filterAndSortNumbers(mixedArray): keep only finite numbers then sort 
+// ascending (provide sample input and output). Use a numeric compare fn.
+function filterAndSortNumbers(mixedArray){
+    return mixedArray.filter(
+        (el) => typeof el === "number" && isFinite(el)
+    ).sort(
+        (a, b) => a-b
+    )
+}
+
+let mixed = [3, "hello", 10, NaN, 7, Infinity, -2, "42"];
+console.log(filterAndSortNumbers(mixed));
+
 
 // // 
