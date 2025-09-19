@@ -285,11 +285,25 @@ for (let key in obj){
 
 // 35. Create a Date for Jan 1, 2025 00:00 local.
 
+console.log(`${new Date(2025, 0, 1, 0, 0, 0 )}`)
+console.log(`${new Date("2025-01-01T00:00:00Z" )}`)
+
 
 // 36. Get the current year from new Date().
 
+console.log(`${new Date().getFullYear()}`)
+
 
 // 37. Write function daysBetween(d1, d2) returning whole day difference (ignore DST intricacies; ms/(1000*60*60*24)).
+
+function daysBetween(d1, d2){
+    return (d2-d1) / (1000 * 60 * 60 * 24)
+}
+
+let d1 = new Date("2025, 9, 18")
+let d2 = new Date("2025, 12, 1")
+
+console.log(`diff between ${d1.toDateString()}, ${d2.toLocaleDateString()} is ${daysBetween(d1, d2)}`);
 
 
 // 38. Generate a random integer 1..100.
