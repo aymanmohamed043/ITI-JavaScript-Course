@@ -87,47 +87,100 @@ btn.onclick =  function(){
 
 // 9. Use `setInterval` to update the time  on the page title every second, and a button to stop it.
 
-let changeTime = setInterval(
-    function(){
-        document.title = new Date().toLocaleTimeString()
-    }, 1000
-)
+// let changeTime = setInterval(
+//     function(){
+//         document.title = new Date().toLocaleTimeString()
+//     }, 1000
+// )
 
-let btn2 = document.createElement("button")
-btn2.textContent = "stop time change"
-document.forms[0].before(btn2)
+// let btn2 = document.createElement("button")
+// btn2.textContent = "stop time change"
+// document.forms[0].before(btn2)
 
-btn2.onclick =  function(){
+// btn2.onclick =  function(){
 
-    clearInterval(changeTime);
-    alert(
-        "chages was cancled"
-    )
-}
+//     clearInterval(changeTime);
+//     alert(
+//         "chages was cancled"
+//     )
+// }
 
 
 // 10. Show a confirm dialog asking "Do you want to continue?"
 //  and log the user's choice("user said yes", "user said no").
 
-let confirmResult = confirm("Do you want to continue?");
-console.log(confirmResult? "user said yes": "user said no");
+// let confirmResult = confirm("Do you want to continue?");
+// console.log(confirmResult? "user said yes": "user said no");
 
 
 // ---
 // DOM Traversal (Nodes, Elements, Collections)
 
-// 11. Select the first `<ul>` in the document and log its `childNodes` and `children` properties. Explain the difference in a comment.
+// 11. Select the first `<ul>` in the document and log its 
+// `childNodes` and `children` properties. Explain the difference in a comment.
+
+let uList = document.querySelector('ul');
+console.log(uList.childNodes);
+console.log(uList.children);
+
+
 // 12. Write a function that logs the tag names of all direct child elements of `<body>`.
-// 13. Given a parent element, loop through its `childNodes` and log only the nodes that are elements (not text/comments).
+
+function logChildren(ele){
+    let directChilds = window.document.body.children
+    for (ele of directChilds){
+        console.log(ele.tagName);
+        
+    } 
+}
+
+logChildren();
+
+// 13. Given a parent element, loop through its `childNodes` 
+// and log only the nodes that are elements (not text/comments).
+
+function logElements(parent){
+    for (let node of parent.childNodes){
+        if(node.nodeType === 1){
+            console.log(node.tagName);
+            
+        }
+        }
+    }
+
+
+logElements(document.body);
+
 // 14. Use `firstChild` and `firstElementChild` on a container and explain the difference in a comment.
-// 15. Write code to get all `<li>` elements inside a `<ul>` using `children` and explain the difference.
+
+console.log(`first child in body ${document.body.firstChild}`);
+console.log(`first element child in body ${document.body.firstElementChild}`);
+
+
+// 15. Write code to get all `<li>` elements inside a
+//  `<ul>` using `children` and explain the difference.
+
+
 // 17. Write a function that logs all sibling elements of a given element (excluding itself).
-// 18. Use `nextSibling` and `nextElementSibling` to traverse from the first child to the last child of a `<ul>`, logging each node.
+
+// 18. Use `nextSibling` and `nextElementSibling` to traverse from the first child 
+// to the last child of a `<ul>`, logging each node.
+
+
 // 19. Count how many element children a given node has (not using `children.length`).
-// 20. Write a function that takes the first form element and logs the names and values of all its input fields using the `elements` collection.
+
+// 20. Write a function that takes the first form element and 
+// logs the names and values of all its input fields using the `elements` collection.
+
+
 // 21. Access all forms in the document using `document.forms` and log their names.
+
+
 // 22. Access all images in the document using `document.images` and log their `src` attributes.
-// 23. Write a function that takes a form and disables all its input fields using the `elements` collection.
+
+// 23. Write a function that takes a form and disables all its input fields u
+// sing the `elements` collection.
+
 // 24. Use `Array.from` to convert `document.images` to an array and filter images with width > 100px.
 
 // ---
